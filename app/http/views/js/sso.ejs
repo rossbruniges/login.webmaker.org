@@ -63,6 +63,7 @@ navigator.personaSSO = {
     }
   },
   init: function(element, onready){
+    console.log(element, 'element');
     element.src = "<%= process.env.AUDIENCE %>/signin?" + encodeURIComponent(window.location.protocol + "//" + window.location.host);
 
     var handlers = {

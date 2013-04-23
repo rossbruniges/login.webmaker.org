@@ -14,7 +14,7 @@
 #sso_create .inline {
     display: inline-block;
 }
-#SSO {
+iframe.SSO {
     height: 60px;
     width: 106px;
     background: transparent;

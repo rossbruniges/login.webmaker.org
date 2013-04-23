@@ -12,11 +12,14 @@
     $(function(){
       // App 1 / App 2 differences
       var appNumber = (document.location.port - 3000),
-          personaSSO = navigator.personaSSO;
+          personaSSO = navigator.personaSSO,
+          loginButtons = document.querySelectorAll('iframe.SSO');
       document.title = "App " + appNumber;
       $('h1').html(document.title);
-
-      personaSSO.init($("#SSO")[0], function(){console.log("onready");});
+      for (var i = 0, len = loginButtons.length; i < len; i++) {
+        console.log(i, 'i');
+        personaSSO.init(loginButtons[i], function(){ console.log( "onready" ); } );
+      }
       personaSSO.id.watch({
         loggedInUser: null, // we don't think anyone's authenticated because we don't hold state in this HTML-only version
         onlogin: function(topic, data){
@@ -49,11 +52,12 @@
           <span id="identity" class="user-name-container"></span>
         </div>
       </li>
-      <li><iframe id="SSO"></iframe></li>
+      <li><iframe class="SSO"></iframe></li>
     </ul>
   </div>
 </div>
 </nav>
   <h1></h1>
+  <iframe class="SSO"></iframe>
 </body>
 </html>
