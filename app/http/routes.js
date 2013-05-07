@@ -8,6 +8,7 @@ module.exports = function( http, userHandle ){
   http.get('/signin', routes.site.signin);
   http.get('/js/sso.js', routes.site.sso);
   http.get('/ajax/forms/new_user.html', routes.user.userForm);
+  http.get('/ajax/forms/user_admin.html', routes.user.adminPanel);
 
   http.post('/user', routes.user.create);
   http.put('/user/:id/', routes.user.update);

@@ -8,7 +8,38 @@ navigator.personaSSO = {
   handlers: {},
   ui: {
     displayLogin: function(userName) {
-      $("#identity").text(userName);
+      var nameTarget = $("#identity"),
+          adminPanel = $("#userAdmin"),
+          handlers = {
+            "editUser": function() {
+              // show the update form
+              // attach submit handler
+              // cancel default
+              // validate data
+              // profit
+              console.log("edit user");
+            },
+            "delUser": function() {
+              // show the delete form
+              // attach submit handler
+              // cancel default
+              // validate data
+              // profit
+              console.log("delete user");
+            }
+          };
+      nameTarget.text(userName);
+      if (!adminPanel.length) {
+        $.get("<%= ssoAudience %>/ajax/forms/user_admin.html", function( html ) {
+          adminPanel = $(html).insertAfter(nameTarget);
+          adminPanel.click( function( e ) {
+            var target = $(e.target);
+            if (target.is("button")) {
+              handlers[ target.attr("id") ]();
+            }
+          });
+        });
+      }
     },
     checkMaker: function(userData, elementAnchor) {
       $.ajax({

@@ -71,6 +71,10 @@ module.exports = function ( UserHandle ) {
     } );
   };
 
+  controller.adminPanel = function( req, res ) {
+    res.render( "ajax/forms/user_admin" );
+  };
+
   /**
   * Access this route from your browser to clear the database of accounts with the emails listed below.
   * e.g. "http://localhost:3000/dev/delete"
